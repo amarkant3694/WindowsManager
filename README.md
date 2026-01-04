@@ -73,6 +73,7 @@ CHANGE BASE DIRECTORY PATHS
 
 File paths are system-specific.
 
+
 Open:
 Backened/main.py
 
@@ -97,8 +98,9 @@ CHECK BACKEND PORT
 By default, the backend runs on port 8500.
 
 Command used:
+```text
 uvicorn main:app --host 127.0.0.1 --port 8500 --reload
-
+```
 If port 8500 is already in use:
 Change the port number
 Update BASE_URL in Frontened/app.js
@@ -140,33 +142,33 @@ INSTALLATION STEPS
 
 CLONE THE REPOSITORY
 -------------------
-
+```text
 git clone https://github.com/amarkant3694/WindowsManager.git
 cd WindowsManager
-
+```
 
 CREATE VIRTUAL ENVIRONMENT (Recommended)
 ----------------------------------------
-
+```text
 python -m venv venv
 venv\Scripts\activate
-
+```
 
 INSTALL DEPENDENCIES
 --------------------
-
+```text
 pip install -r requirements.txt
-
+```
 
 RUNNING THE PROJECT
 ===================
 
 START BACKEND
 -------------
-
+```text
 cd Backened
 uvicorn main:app --host 127.0.0.1 --port 8500 --reload
-
+```
 
 OPEN FRONTEND
 -------------
@@ -197,6 +199,7 @@ No authentication or internet exposure
 Do NOT forward ports or expose publicly
 
 
+
 DISCLAIMER
 ==========
 
@@ -208,5 +211,4 @@ AUTHOR
 ======
 
 Created by: Amarkant
-
 GitHub: https://github.com/amarkant3694
