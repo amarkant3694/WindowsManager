@@ -26,10 +26,10 @@ NOTE:
 This project is intended for personal use on your own PC and runs only on
 localhost for safety reasons.
 
-
 PROJECT STRUCTURE
 =================
 
+```text
 Project/
 |
 |-- Backened/
