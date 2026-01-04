@@ -27,6 +27,7 @@ localhost for safety reasons.
 
 ## 📁 Project Structure
 
+```text
 Project/
 │
 ├── Backened/
