@@ -25,6 +25,14 @@ This project is intended for **personal use on your own PC** and runs only on
 localhost for safety reasons.
 
 
+
+**right after the tree**, before `REQUIREMENTS`.
+
+---
+
+## ✅ CORRECTED VERSION (COPY–PASTE THIS EXACTLY)
+
+```md
 ## 📁 Project Structure
 
 ```text
@@ -41,9 +49,11 @@ Project/
 │   └── app.js           # Frontend logic
 │
 ├── requirements.txt     # Python dependencies
-├── .gitignore           # Ignored files for Git
+├── .gitignore           # Ignored files
 └── README.md            # Project documentation
-```text
+
+```md
+
 
 
 REQUIREMENTS
