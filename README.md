@@ -25,23 +25,24 @@ This project is intended for **personal use on your own PC** and runs only on
 localhost for safety reasons.
 
 
-PROJECT STRUCTURE
-=================
+## 📁 Project Structure
+
 Project/
 │
 ├── Backened/
-│   ├── main.py          -> FastAPI backend server
-│   ├── security.py      -> Local access security checks
-│   └── system.py        -> System-level PC control functions
+│   ├── main.py          # FastAPI backend server
+│   ├── security.py      # Local access & security checks
+│   └── system.py        # System-level PC control functions
 │
 ├── Frontened/
-│   ├── windows.html     -> Main UI
-│   ├── windows.css      -> Styling
-│   └── app.js           -> Frontend logic
+│   ├── windows.html     # Main web UI
+│   ├── windows.css      # UI styling
+│   └── app.js           # Frontend logic (API calls & UI behavior)
 │
-├── requirements.txt     -> Python dependencies
-├── .gitignore           -> Ignored files for Git
-└── README.txt           -> Project documentation
+├── requirements.txt     # Python dependencies
+├── .gitignore           # Git ignored files
+└── README.md            # Project documentation
+
 
 
 REQUIREMENTS
@@ -131,8 +132,8 @@ INSTALLATION STEPS
 
 1. CLONE THE REPOSITORY
 ----------------------
-    git clone https://github.com/USERNAME/REPOSITORY_NAME.git
-    cd REPOSITORY_NAME
+    git clone https://github.com/amarkant3694/WindowsManager.git
+    cd WindowsManager
 
 
 2. CREATE VIRTUAL ENVIRONMENT (Recommended)
