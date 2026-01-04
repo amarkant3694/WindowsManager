@@ -37,10 +37,10 @@ Project/
 ├── Frontened/
 │   ├── windows.html     # Main web UI
 │   ├── windows.css      # UI styling
-│   └── app.js           # Frontend logic (API calls & UI behavior)
+│   └── app.js           # Frontend logic
 │
 ├── requirements.txt     # Python dependencies
-├── .gitignore           # Git ignored files
+├── .gitignore           # Ignored files for Git
 └── README.md            # Project documentation
 
 
@@ -191,4 +191,5 @@ The author is not responsible for misuse or data loss.
 AUTHOR
 ======
 Created by: Amarkant
+
 GitHub: https://github.com/amarkant3694
