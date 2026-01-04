@@ -2,193 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Remote PC Manager</title>
+    <title>Remote PC Manager</title>
     <link rel="stylesheet" href="windows.css">
 </head>
 <body>
 
+<header>
+    <div class="brand">Remote PC Manager</div>
+</header>
 
-    <header>
-        <div class="brand">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            Remote PC Manager
-        </div>
-        <div class="status-badge">
-            <div class="status-dot"></div>
-            Online
-        </div>
-    </header>
+<nav>
+    <button class="nav-btn active" data-page="files" onclick="switchPage('files')">File System</button>
+    <button class="nav-btn" data-page="terminal" onclick="switchPage('terminal')">Terminal</button>
+    <button class="nav-btn" data-page="dashboard" onclick="switchPage('dashboard')">Dashboard</button>
+</nav>
 
+<main>
 
+<!-- FILE SYSTEM (DEFAULT PAGE) -->
+<section id="files" class="page active">
+    <h3>File Explorer</h3>
 
-    <nav>
-        
-        <button class="nav-btn" onclick="switchPage('files')">File System</button>
-        <button class="nav-btn" onclick="switchPage('terminal')">Terminal</button>
-        <button class="nav-btn active" onclick="switchPage('dashboard')">Dashboard</button>
+    <div class="file-nav">
+        <button onclick="navigateBack()">← Back</button>
+        <button onclick="navigateForward()">Forward →</button>
+    </div>
 
-    </nav>
+    <select id="root-select" onchange="changeRoot()"></select>
+    <div id="file-root-label"></div>
+    <div id="file-tree-root"></div>
+</section>
 
-    <main>
-        
+<!-- TERMINAL -->
+<section id="terminal" class="page">
+    <h3>Terminal</h3>
+    <div id="terminal-output"></div>
+    <input id="term-input" />
+</section>
 
-<!-- FILES PAGE -->
-        
+<!-- DASHBOARD -->
+<section id="dashboard" class="page">
+    <h3>Dashboard</h3>
+</section>
 
-        <section id="files" class="page">
-            <div class="card">
-                <h4>File Explorer</h4>
-            </div>
-            <div class="file-nav">
-                <button class="btn-file-nav" onclick="navigateBack()">← Back</button>
-                <button class="btn-file-nav" onclick="navigateForward()">Forward →</button>
-            </div>
-            <h3>
-                <select id="root-select" onchange="changeRoot()"></select>
-                <div id="file-root-label" class="file-root"></div>
-                <div class="file-tree" id="file-tree-root"></div>
-            </h3>
-<!-- Add file navigation array backward and forward buttons -->
+</main>
 
-
-
-        </section>
-    <div id="context-menu" style="
-    position: fixed;
-    display: none;
-    background: #222;
-    border: 1px solid #444;
-    border-radius: 6px;
-    z-index: 9999;
-">
-    <div onclick="contextDownload()">⬇ Download</div>
-    <div onclick="contextRename()">✏ Rename</div>
-    <div onclick="contextDelete()">🗑 Delete</div>
-</div>
-
-
-
-        <!-- TERMINAL PAGE -->
-        <section id="terminal" class="page active">
-            <div class="card" style="height: 100%;">
-                <h3>PowerShell / Terminal</h3>
-                <div class="terminal-window" id="terminal-output">
-                    <div class="term-line">Windows PowerShell</div>
-                    <div class="term-line">Copyright (C) Microsoft Corporation. All rights reserved.</div>
-                    <div class="term-line">Install the latest PowerShell for new features and improvements!</div>
-                    <br>
-                    <div class="term-line">Try the new cross-platform PowerShell https://aka.ms/pscore6</div>
-                    <br>
-                </div>
-                <div class="term-input-line">
-                    <span class="term-prompt">PS C:\Users\Admin></span>
-                    <input type="text" class="term-input" id="term-input" autocomplete="off" spellcheck="false">
-                </div>
-            </div>
-
-
-        </section>
-
-                    <!-- DASHBOARD PAGE -->
-        <section id="dashboard" class="page active">
-            <div class="dashboard-grid">
-                <!-- System Stats -->
-                <div class="card">
-                    <h3>System Status</h3>
-                    <div class="stat-row">
-                        <div class="stat-label"><span>CPU Usage</span><span id="cpu-val">32%</span></div>
-                        <div class="progress-bg"><div class="progress-fill cpu" id="cpu-bar" style="width: 32%"></div></div>
-                    </div>
-                    <div class="stat-row">
-                        <div class="stat-label"><span>RAM Usage</span><span id="ram-val">4.2GB / 16GB</span></div>
-                        <div class="progress-bg"><div class="progress-fill ram" id="ram-bar" style="width: 26%"></div></div>
-                    </div>
-                    <div class="stat-row">
-                        <div class="stat-label"><span>Storage (C:)</span><span id="disk-val">120GB / 512GB</span></div>
-                        <div class="progress-bg"><div class="progress-fill disk" id="disk-bar" style="width: 23%"></div></div>
-                    </div>
-                    <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-dim);">
-                        <p>Uptime: <span id="uptime">00:00:00</span></p>
-                        <p>IP Address: 192.168.1.105</p>
-                    </div>
-                </div>
-
-                <!-- Power Controls -->
-                <div class="card">
-                    <h3>Power Actions</h3>
-                    <div class="power-grid">
-                        <button class="btn-power btn-lock" onclick="triggerAction('Lock Screen')">
-                            🔒 Lock
-                        </button>
-                        <button class="btn-power btn-logout" onclick="triggerAction('Log Off')">
-                            👤 Log Off
-                        </button>
-                        <button class="btn-power btn-restart" onclick="triggerAction('Restart System')">
-                            🔄 Restart
-                        </button>
-                        <button class="btn-power btn-shutdown" onclick="triggerAction('Shutdown System')">
-                            ⏻ Shutdown
-                        </button>
-                    </div>
-                    <p style="margin-top: 15px; font-size: 0.8rem; color: var(--text-dim);">
-                        Note: These actions are simulated. In the real bot, these will execute immediately on your host machine.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Media Preview -->
-            <div class="card">
-                <h3>Camera & Media</h3>
-                <div style="background: black; height: 200px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #555;">
-                    <div style="text-align: center;">
-                        <p>📷 Camera Feed (Inactive)</p>
-                        <button style="margin-top: 10px; padding: 5px 10px; background: var(--accent); border: none; color: white; border-radius: 4px; cursor: pointer;" onclick="triggerAction('Capture Snapshot')">Snapshot</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </main>
-
-    <div id="toast-container"></div>
+<div id="toast-container"></div>
 
 <script>
-    // --- Navigation Logic ONLY ---
-    function switchPage(pageId) {
-        document.querySelectorAll('.page')
-            .forEach(p => p.classList.remove('active'));
+function switchPage(pageId) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
 
-        document.querySelectorAll('.nav-btn')
-            .forEach(b => b.classList.remove('active'));
+    document.getElementById(pageId).classList.add("active");
+    document.querySelector(`[data-page="${pageId}"]`).classList.add("active");
 
-        const page = document.getElementById(pageId);
-        if (page) page.classList.add('active');
-
-        // Highlight nav button
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            if (btn.dataset.page === pageId) {
-                btn.classList.add('active');
-            }
-        });
-
-        // 🔁 Load File Explorer ONLY when Files tab opens
-        if (pageId === "files" && typeof loadBaseRoot === "function") {
-            loadBaseRoot();
-        }
+    // ✅ Correct function
+    if (pageId === "files" && typeof loadRoots === "function") {
+        loadRoots();
     }
+}
 </script>
 
-
-
 <script src="app.js"></script>
-
-
-
-
 </body>
 </html>

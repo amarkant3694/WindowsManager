@@ -261,8 +261,14 @@ document.addEventListener("keydown", (e) => {
 });
 
 // ================= INIT =================
+// document.addEventListener("DOMContentLoaded", () => {
+//     if (document.getElementById("root-select")) {
+//         loadRoots();
+//     }
+// });
+// ================= FORCE INIT FILE EXPLORER =================
+let rootsLoaded = false;
 document.addEventListener("DOMContentLoaded", () => {
-    if (document.getElementById("root-select")) {
-        loadRoots();
-    }
+    console.log("DOM loaded → loading file roots");
+    loadRoots();
 });
