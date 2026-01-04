@@ -45,7 +45,7 @@ Project/
 |-- requirements.txt    (Python dependencies)
 |-- .gitignore           (Ignored files)
 |-- README.md            (Project documentation)
-
+```
 
 REQUIREMENTS
 ============
