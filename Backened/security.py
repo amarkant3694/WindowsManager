@@ -1,6 +1,6 @@
 import os
 
-API_KEY = os.getenv("REMOTE_PC_API_KEY", "nobody@1906")
+API_KEY = os.getenv("REMOTE_PC_API_KEY", "default_key")
 
 def verify_key(key: str):
     if key != API_KEY:
