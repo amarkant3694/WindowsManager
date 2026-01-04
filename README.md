@@ -43,7 +43,7 @@ Project/
 ├── requirements.txt     # Python dependencies
 ├── .gitignore           # Ignored files for Git
 └── README.md            # Project documentation
-
+```text
 
 
 REQUIREMENTS
